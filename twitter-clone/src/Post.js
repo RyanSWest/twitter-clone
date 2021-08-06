@@ -22,23 +22,23 @@ function Post({
         <div className = "post">
             <div className = "post__avatar">
                 <Avatar
-                  src = "https://tse1.mm.bing.net/th?id=OIP.hovcpGJnAzaVfo4ZJm-owAHaEK&pid=Api&P=0&w=279&h=157"/>
+                  src = {avatar}/>
                   
             </div>
             <div className = 'post__body'>
                 <div className = 'post__header'>
                     <div className = 'post__headerText'>
-                        <h3>Some guy <span className= 'post__headerSpecial'>
-                            <VerifiedUserIcon className = 'post__badge'/>
+                        <h3>{displayName} <span className= 'post__headerSpecial'>
+                            {verified && ( <VerifiedUserIcon className = 'post__badge'/>) }
+                            {/* <VerifiedUserIcon className = 'post__badge'/> */}
                         </span>
                         </h3>
                     </div>
                     <div className ='post__headerDescription'>
-                        <p>I challenge you!</p>
+                        <p> {text}</p>
                     </div>
             </div>
-            <img src = 'https://media2.giphy.com/media/Ywxt9v39rUpmU/giphy.gif?cid=ecf05e47bd523ed1daac6161512f488cffdbcf350e3d1bab&rid=giphy.gif&ct=g'/>
-            <div className = 'post__footer'>
+            <img src = {image}  />
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
             <FavoriteBorderIcon fontSize="small" />
@@ -48,7 +48,7 @@ function Post({
             </div>
             
         </div>
-        </div>
+        
     )
 }
 

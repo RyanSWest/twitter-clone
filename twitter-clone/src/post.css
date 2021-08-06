@@ -9,7 +9,9 @@
     padding:10px;
 }
 
-
+.posts{
+    border:2px solid red;
+}
 .post__body>img{
 
     border-radius: 20px;

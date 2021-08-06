@@ -1,12 +1,24 @@
-import React from 'react';
+import React , {useState, useEffect}from 'react';
 import './feed.css';
 import TweetBox  from './TweetBox';
 import Post from './Post';
+import db from './firebase'
 
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 
 function Feed() {
+    const [posts, setPosts]=useState([])
+
+    useEffect(()=> {
+        db.collection('Posts').onSnapshot(snapshot => {
+            setPosts(snapshot.docs.map(doc => doc.data()))
+        })
+
+
+    }, [])
+
+    console.log("POSTS", posts)
     return (
         <div className= "feed">
              <div className="feed__header"> 
@@ -23,7 +35,26 @@ function Feed() {
                         <VerifiedUserIcon className = 'post__badge'/>
                     </span>
                 </div> */}
-                <Post/>
+                {posts.map(post => (
+                    
+                    <Post
+                    displayName = {post.displayName}
+                   username= {post.username}
+                   text =  {post.text}
+                   avatar= {post.avatar}
+                   image=  {post.image}
+                   verified={post.verified}
+                     />
+                     
+    ))}
+                {/* <Post
+                 displayName ="Zank Frappa"
+                username= 'Zappa'
+                text = "IT WORKS!"
+                avatar='https://www.bing.com/th?id=OIP.AO0OY95_OK5THisN9Cff_AHaHO&w=209&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2'
+                image= 'https://www.bing.com/th?id=OIP.nrilZjACn2hzR9WbDWZSOAHaE9&w=143&h=106&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2'
+                verified={true}
+                  /> */}
             </div>
             <TweetBox/>
 
