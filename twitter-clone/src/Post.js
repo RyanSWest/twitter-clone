@@ -39,11 +39,12 @@ function Post({
                     </div>
             </div>
             <img src = {image}  />
+            <div className = 'post__footer'> 
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
             <FavoriteBorderIcon fontSize="small" />
             <PublishIcon fontSize="small" />
-
+            </div>
 
             </div>
             
