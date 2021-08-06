@@ -17,8 +17,15 @@ function Post({
                   src = "https://tse1.mm.bing.net/th?id=OIP.hovcpGJnAzaVfo4ZJm-owAHaEK&pid=Api&P=0&w=279&h=157"/>
                   
             </div>
+            <div className = 'post__body'>
+                <div className = 'post__header'>
+                    <div className = 'post__headerText'>
+                        <h3>Some guy</h3><span></span>
+                    </div>
+            </div>
 
             
+        </div>
         </div>
     )
 }
