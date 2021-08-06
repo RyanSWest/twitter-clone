@@ -1,6 +1,7 @@
 import React from 'react';
 import './feed.css';
 import TweetBox  from './TweetBox';
+import Post from './Post';
 
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
@@ -16,12 +17,13 @@ function Feed() {
 
                 </div>
 
-                <div className = 'post__headerText'>
+                {/* <div className = 'post__headerText'>
                     <h3>Hey!!</h3><span>
 
                         <VerifiedUserIcon className = 'post__badge'/>
                     </span>
-                </div>
+                </div> */}
+                <Post/>
             </div>
             <TweetBox/>
 
