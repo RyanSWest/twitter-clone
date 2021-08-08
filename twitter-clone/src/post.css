@@ -34,7 +34,14 @@
     font-size: 14px !important;
     color: var(--twitter-color);
   }
-  
+
+  .num__comments{
+    margin-left: 4px;
+  }
+  .seeComments {
+    color:var(--twitter-color);
+    cursor:pointer;
+  }
   .post__headerSpecial {
     font-weight: 600;
     font-size: 12px;
