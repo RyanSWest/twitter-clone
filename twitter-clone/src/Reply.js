@@ -37,7 +37,7 @@ const [image, setImage]=useState('')
        
        <div className = 'reply__top'>
            <Avatar src = {avatar}/>
-           <p>{id}</p>
+       
           <p><strong>{displayName}</strong>  @{displayName}</p>
           
        </div>

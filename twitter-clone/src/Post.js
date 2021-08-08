@@ -26,14 +26,16 @@ const Post = forwardRef(
     avatar,
     
     id,
-    replying
+    replying,
+    likes
     
 },ref)=> {
 
     const [stuff,setStuff]=useState([])
     // console.log("STUFF", stuff)
     const [comment, setComment]=useState('')
-  
+     const [numLikes,setNumLikes]=useState(0)
+     
  
     
     useEffect(() => {
@@ -54,6 +56,14 @@ const Post = forwardRef(
          
          
     }, [ ])
+
+    //Try to add the Likes Now
+    const like =()=> {
+        db.collection('Posts').doc(id).add({
+            likes: numLikes +1
+        })
+
+    }
 
      const [reply, setReply]= useState(false)
 
@@ -116,24 +126,39 @@ const Post = forwardRef(
                     </div>
             </div>
             <img src = {image}  />
+             
+             {stuff.length >0 && (
+                   <p
+                   className = 'seeComments'
+                   onClick ={()=> setSeeComments(!seeComments)}>See Comments</p>
+             )}
+            
 
-            <p
-            className = 'seeComments'
-            onClick ={()=> setSeeComments(!seeComments)}>See Comments</p>
+
             {seeComments && (
                 stuff.map(e => (
-                    <p> {e.data.username}:{e.data.text}</p>
+                    <p><strong> {e.data.username}</strong> :  {e.data.text}</p>
                 ))
             )}
             <div className = 'post__footer'> 
-             <span onClick = {()=> setReply(!reply)}> 
+             <div
+             className='num__comments'
+              onClick = {()=> setReply(!reply)}> 
+              <div className = 'comment'> 
             <ChatBubbleOutlineIcon fontSize="small" />
-            <p className='num__comments'>{stuff.length}</p> 
-            </span>
+            </div>
+            <p   >{stuff.length}</p> 
+            </div>
             
              
             <RepeatIcon fontSize="small" />
+            <div
+             className='likes'
+            onClick={()=> setNumLikes(numLikes+1)}> 
             <FavoriteBorderIcon fontSize="small" />
+           
+            <p  > {numLikes}</p>
+            </div>
             <PublishIcon fontSize="small" />
             </div>
 

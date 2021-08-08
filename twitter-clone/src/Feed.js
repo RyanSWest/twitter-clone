@@ -47,6 +47,7 @@ function Feed() {
                    image=  {post.data.image}
                    verified={post.data.verified}
                    replying= {post.data.replying}
+                   likes = {post.data.likes}
                    
                      />
                      
