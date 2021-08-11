@@ -21,7 +21,11 @@ function App() {
   useEffect(() => {
     db.collection("Posts").onSnapshot((snapshot) =>
       setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+
+      
     );
+    let orderedPosts= posts.sort((a,b)=> b.timestamp - a.timestamp)
+    setPosts(orderedPosts)
   }, []);
   const [searchItem, setSearchItem] = useState("");
   console.log("POST FROM APP", posts);

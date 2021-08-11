@@ -14,12 +14,25 @@ function Feed({ searcher }) {
   const [searchItem, setSearchItem] = useState("");
 
   useEffect(() => {
-    db.collection("Posts").onSnapshot((snapshot) =>
+    db.collection("Posts").orderBy('timestamp').get().then((snapshot) =>
       setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+      
     );
-  }, [searchItem]);
+      
 
-  console.log("POSTS", posts);
+  }, [searchItem, posts.length]);
+
+  let orderedPosts= posts.sort((a,b)=> parseInt (b.data.timestamp) - parseInt (a.data.timestamp)) 
+
+ 
+ console.log("ORDER", orderedPosts)
+   
+  console.log(Date.now())
+
+   
+
+   
+  
   return (
     <div className="feed">
       <div className="feed__header">
@@ -44,7 +57,7 @@ function Feed({ searcher }) {
         <div className="post__header"></div>
         <TweetBox />
 
-        {posts.map((post) => (
+        {posts.map ((post) => (
           <Post
             key={post.id}
             id={post.id}
@@ -56,6 +69,7 @@ function Feed({ searcher }) {
             verified={post.data.verified}
             replying={post.data.replying}
             likes={post.data.likes}
+            timestamp ={post.data.timestamp}
           />
         ))}
       </div>

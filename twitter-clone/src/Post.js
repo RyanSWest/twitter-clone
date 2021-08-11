@@ -28,6 +28,7 @@ const Post = forwardRef(
       id,
       replying,
       likes,
+      
     },
     ref
   ) => {

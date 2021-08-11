@@ -18,7 +18,9 @@ const [image, setImage]=useState('')
     )
 
     db.collection('Posts').add({
-        displayName: 'Hipster_Tony',text:comment, replying:displayName, avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Hipster%2C_Newtown%2C_hipster_beard%2C_retro_watch%2C_colourful_glasses.jpg/1200px-Hipster%2C_Newtown%2C_hipster_beard%2C_retro_watch%2C_colourful_glasses.jpg'
+        displayName: 'Hipster_Tony',text:comment, replying:displayName, avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Hipster%2C_Newtown%2C_hipster_beard%2C_retro_watch%2C_colourful_glasses.jpg/1200px-Hipster%2C_Newtown%2C_hipster_beard%2C_retro_watch%2C_colourful_glasses.jpg',
+        image: image,
+        timestamp: Date.now()
 
 
 
@@ -56,6 +58,12 @@ const [image, setImage]=useState('')
             value={comment}
             onChange={(e)=>setComment(e.target.value)}
         
+        />
+        <input 
+        placeholder ="Enter an Image (optional)"
+        name ={image}
+        value={image}
+        onChange = {(e)=> setImage(e.target.value)}
         />
 
        </div>
