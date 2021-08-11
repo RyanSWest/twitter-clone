@@ -14,7 +14,28 @@
      /* scrollbar-width: none; */
 }
 
+.feed__search {
+    color:gray;
+}
+
+.feed__input{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--twitter-background);
+    padding:10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    width:70%;
+}
+.feed__input > input {
+    border: none;
+    background-color: var(--twitter-background);
+}
 .feed__header{
+    display:flex;
     position:sticky;
     top:0;
     background-color: white;
