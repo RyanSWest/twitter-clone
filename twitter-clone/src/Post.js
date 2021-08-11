@@ -12,6 +12,9 @@ import "./reply.css";
 import CloseIcon from "@material-ui/icons/Close";
 import { useEffect } from "react";
 import db from "./firebase";
+import GifIcon from '@material-ui/icons/Gif';
+import Gifs from './Gifs';
+
 
 const Post = forwardRef(
   (
@@ -58,6 +61,8 @@ const Post = forwardRef(
     const [reply, setReply] = useState(false);
 
     const [seeComments, setSeeComments] = useState(false);
+
+    const [seeGifs, setSeeGifs]= useState(false)
 
     const toggle = () => {
       setReply(!reply);
@@ -127,7 +132,12 @@ const Post = forwardRef(
                 </div>
                 <p>{stuff.length}</p>
               </div>
+                <div className ='gifs'
+                  onClick ={()=>setSeeGifs(!seeGifs)}
+                 >
+                  <GifIcon fontSize = "small"/>
 
+                </div>
               <RepeatIcon fontSize="small" />
               <div className="likes" onClick={() => setNumLikes(numLikes + 1)}>
                 <FavoriteBorderIcon fontSize="small" />

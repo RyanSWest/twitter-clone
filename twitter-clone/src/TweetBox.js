@@ -1,11 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './tweetBox.css';
 import {Avatar, Button} from "@material-ui/core";
 import db from './firebase'
+import GifIcon from '@material-ui/icons/Gif';
+import CloseIcon from '@material-ui/icons/Close'
+import Gifs from './Gifs';
+import './Gifs.css'
 
 function TweetBox() {
     const[tweetMessage, setTweetMessage]=useState('')
     const[tweetImage, setTweetImage]= useState('')
+
+    const[seeGifs, setSeeGifs]= useState(false)
+
+    const openGifs =()=> {
+        setSeeGifs(!seeGifs)
+        console.log("GIF==>", seeGifs)
+    }
+     //get Gif collection from Firebase!!
+    const [gifs,setGifs]= useState([])
+    useEffect(() => {
+      db.collection("Gifs").onSnapshot((snapshot) =>
+        setGifs(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+  
+        
+      );
+      
+    }, []);
     
     const sendTweet =  ()=> {
         // e.preventDefault();
@@ -24,8 +45,38 @@ function TweetBox() {
         setTweetMessage('')
 
     }
+    
+    const sendGif=(id)=> {
+        setTweetImage(id)
+    }
+    console.log("SEEE+", seeGifs)
+    //OPEN THE GIF ICON TO ADD A GIF TO YOUR POST!
     return (
         <div className = 'tweetBox'>
+            
+            {seeGifs && (
+               
+               <div className = 'gif__container'>
+                   <div className= 'gif__close'>
+                <span onClick= {()=>openGifs()}><CloseIcon/></span>
+                   </div>
+                      <div>  
+                    {gifs.map(g=> (
+                         <div className = 'gif__imageDiv'
+                          onClick={()=> setTweetImage(g.data.image)}
+                         >
+                        <img 
+                        className = 'gif__image'
+                        src ={g.data.image}/>
+                        </div>
+                    ))} 
+                   </div>
+ 
+                        
+                   
+                   
+                    </div>
+            )}
 
             <form>
                 <div className = "tweetBox__input">
@@ -53,12 +104,17 @@ function TweetBox() {
                  
                  
                  />
-
-                <Button className = "tweetBox__button"
+ 
+            </form>
+            <div className = "tweetBox__footer">
+                <div onClick={()=> openGifs()}> 
+                <GifIcon font-size ='large'/>
+                </div>
+                 <Button className = "tweetBox__button"
                 onClick={(e)=>sendTweet()}
                 
                 >Tweet</Button>
-            </form>
+            </div>
 
             
         </div>

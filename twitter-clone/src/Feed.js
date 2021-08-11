@@ -20,7 +20,7 @@ function Feed({ searcher }) {
     );
       
 
-  }, [searchItem, posts.length]);
+  }, [searchItem]);
 
   let orderedPosts= posts.sort((a,b)=> parseInt (b.data.timestamp) - parseInt (a.data.timestamp)) 
 
