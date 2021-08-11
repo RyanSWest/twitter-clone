@@ -70,7 +70,7 @@ const [image, setImage]=useState('')
          
          
         <div className = 'reply__buttonDiv'>
-            <GifIcon size= 'large'/> 
+            <GifIcon fontSize= 'large'/> 
             <EmojiEmoticon/>
             <Button
             onClick={()=>addComment(comment)}

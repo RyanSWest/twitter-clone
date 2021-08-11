@@ -6,6 +6,7 @@ import GifIcon from '@material-ui/icons/Gif';
 import CloseIcon from '@material-ui/icons/Close'
 import Gifs from './Gifs';
 import './Gifs.css'
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
 function TweetBox() {
     const[tweetMessage, setTweetMessage]=useState('')
@@ -46,10 +47,8 @@ function TweetBox() {
 
     }
     
-    const sendGif=(id)=> {
-        setTweetImage(id)
-    }
-    console.log("SEEE+", seeGifs)
+    
+     
     //OPEN THE GIF ICON TO ADD A GIF TO YOUR POST!
     return (
         <div className = 'tweetBox'>
@@ -107,9 +106,15 @@ function TweetBox() {
  
             </form>
             <div className = "tweetBox__footer">
-                <div onClick={()=> openGifs()}> 
-                <GifIcon font-size ='large'/>
+                <div
+                 className = 'gifIcon__div'
+                onClick={()=> openGifs()}> 
+                <GifIcon fontSize ='large' color= 'primary'/>
+                 {/* <p>Click!</p> */}
+                 <AddAPhotoIcon/>
+
                 </div>
+ 
                  <Button className = "tweetBox__button"
                 onClick={(e)=>sendTweet()}
                 
