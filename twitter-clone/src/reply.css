@@ -1,0 +1,107 @@
+.reply {
+ 
+position: absolute;
+top:100px; 
+z-index: 2;
+background-color :white;
+width :400px;
+height: 350px;
+margin-left: 2px; 
+border: 2px solid var(--twitter-color);
+ border-radius:10px;
+}
+.close__x{
+    margin:5px;
+    padding:3px;
+}
+.close {
+    height: 30px;
+    padding-bottom:5px;
+}
+ 
+.close :hover{
+    background-color: rgb(175, 212, 226);
+    border-radius: 25px;
+
+     
+}
+
+.reply__middle{
+    display: flex;
+    margin-left: 10px;
+    padding:15px;
+}
+
+.post__text{
+    border:2px solid  var(--twitter-color);
+    
+}
+.post__text >p{
+    margin-left: 50px;
+    
+    height: 35%;
+}
+.reply__middle >input{
+    border:none;
+    margin-left:7px;
+}
+.reply__top {
+     
+    display:flex;
+    padding-left: 5px;
+   
+    align-content:flex-start;
+    margin-bottom:3px;
+    margin-top: 3px;
+}
+.reply__top >p{
+    
+    color: darkgray;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.replying{
+    display: flex;
+    flex-direction: row;
+}
+.replying > span {
+    margin-left: 10px;
+
+    color: gray;
+}
+.displayName{
+    color: var(--twitter-color)
+
+
+}
+
+.reply__top >input {
+    flex: 1;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+}
+
+.replying__to{
+    color:var(--twitter-color)
+}
+.reply__button{
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    width: 80px;
+    height: 40px !important;
+    margin-top: 20px !important;
+    margin-left: auto !important;
+    margin-bottom: 10px;
+}
+
+.reply__buttonDiv{
+    border:2px solid blue;
+    display: flex;
+    justify-content: center;
+    
+}

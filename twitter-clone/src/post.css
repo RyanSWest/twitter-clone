@@ -13,6 +13,11 @@
   .post__body > img {
     border-radius: 20px;
   }
+  .num__comments{
+    padding:8px;
+    border-radius: 25px;
+  }
+   
   
   .post__footer {
     display: flex;
@@ -34,7 +39,25 @@
     font-size: 14px !important;
     color: var(--twitter-color);
   }
-  
+  .likes{
+    border-radius: 25px;
+    padding:5px;
+  }
+  .likes :hover{
+    color: rgb(247, 189, 168);
+    border-radius:25px;
+  }
+  .num__comments{
+    margin-left: 4px;
+  }
+
+  .comment:hover{
+    color:var(--twitter-color)
+  }
+  .seeComments {
+    color:var(--twitter-color);
+    cursor:pointer;
+  }
   .post__headerSpecial {
     font-weight: 600;
     font-size: 12px;

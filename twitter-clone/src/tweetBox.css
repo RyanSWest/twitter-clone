@@ -43,3 +43,8 @@
    
 
 }
+
+.tweetBox__footer{
+    display:flex;
+    justify-content: space-evenly;
+}
