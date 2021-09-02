@@ -11,6 +11,18 @@ const firebaseConfig = {
     measurementId: "G-2NZ6ZVXM1T"
   };
 
+
+// Said It had gone over the daily Data Limit, retry right here
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBElyzUlBB2SzRspQ5uZZCVK0jfshX6Jew",
+//   authDomain: "twitter2-40173.firebaseapp.com",
+//   projectId: "twitter2-40173",
+//   storageBucket: "twitter2-40173.appspot.com",
+//   messagingSenderId: "1084387144723",
+//   appId: "1:1084387144723:web:b0f83d98241953c638bbe6",
+//   measurementId: "G-YW0DBDTC88"
+// };
+
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore();

@@ -1,8 +1,10 @@
 import React, {useEffect, useState}from 'react'
 import db from "./firebase";
+import CloseIcon from '@material-ui/icons/Close'
 
 
-function Gifs() {
+
+function Gifs({openGifs}) {
 
 const [gifs,setGifs]= useState([])
   useEffect(() => {
@@ -14,9 +16,16 @@ const [gifs,setGifs]= useState([])
     
   }, []);
     return (
-        <div className = 'gifs'>
+        <div className = 'gif__container'>
+          <span onClick = {()=> openGifs()}> 
+          <CloseIcon />
+          </span>
+          
          {gifs.map(g => (
-             <img src ={g.data.image}/>
+          <div className = 'gif__imageDiv'>
+             <img
+              className ="gif__image" src ={g.data.image}/>
+             </div>
          ))}
             
         </div>

@@ -7,9 +7,12 @@ import { useContext } from "react";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import { PostContext } from "./contexts/PostContext";
 import SearchIcon from "@material-ui/icons/Search";
+import { SearchContext } from "./contexts/SearchContext";
+ 
 
-function Feed({ searcher }) {
+function Feed({searcher} ) {
   const { posts, setPosts } = useContext(PostContext);
+  const {search, setSearch} = useContext(SearchContext)
 
   const [searchItem, setSearchItem] = useState("");
 
@@ -20,15 +23,14 @@ function Feed({ searcher }) {
     );
       
 
-  }, [searchItem]);
+  }, [ posts, searchItem]);
+
+  
 
   let orderedPosts= posts.sort((a,b)=> parseInt (b.data.timestamp) - parseInt (a.data.timestamp)) 
 
  
- console.log("ORDER", orderedPosts)
-   
-  console.log(Date.now())
-
+  
    
 
    
@@ -36,7 +38,7 @@ function Feed({ searcher }) {
   return (
     <div className="feed">
       <div className="feed__header">
-        <h2>Home</h2>
+        <h2>Home </h2>
         <div className="feed__input">
           <SearchIcon className="feed__search" />
 
@@ -50,7 +52,7 @@ function Feed({ searcher }) {
           />
 
           <button onClick={() => searcher(searchItem)}>Search</button>
-        </div>
+         </div>
       </div>
 
       <div className="post__body">

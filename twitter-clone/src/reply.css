@@ -33,7 +33,7 @@ border: 2px solid var(--twitter-color);
 }
 
 .post__text{
-    border:2px solid  var(--twitter-color);
+    /* border:2px solid  var(--twitter-color); */
     
 }
 .post__text >p{
@@ -100,7 +100,7 @@ border: 2px solid var(--twitter-color);
 }
 
 .reply__buttonDiv{
-    border:2px solid blue;
+     
     display: flex;
     justify-content: center;
     

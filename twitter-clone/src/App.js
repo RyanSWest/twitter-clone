@@ -19,17 +19,15 @@ function App() {
    
 
   useEffect(() => {
-    db.collection("Posts").onSnapshot((snapshot) =>
+    db.collection("Posts").orderBy('timestamp').get().then((snapshot) =>
       setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-
       
     );
-    let orderedPosts= posts.sort((a,b)=> b.timestamp - a.timestamp)
-    setPosts(orderedPosts)
-  }, []);
-  const [searchItem, setSearchItem] = useState("");
-  console.log("POST FROM APP", posts);
+      
 
+  }, [ posts]);
+  const [searchItem, setSearchItem] = useState("");
+ 
   const searcher = (item) => {
     const filtered = posts.filter((e) => {
       if (
@@ -52,19 +50,19 @@ function App() {
         <PostContext.Provider value={{ posts, setPosts }}>
           <SearchContext.Provider
             value={{ search, setSearch }}
-          ></SearchContext.Provider>
+          > 
 
           <Sidebar />
 
           <Feed searcher={searcher}   />
 
           <Widgets posts={posts} searcher={searcher} />
+          </SearchContext.Provider>
         </PostContext.Provider>
-        <Route path="/search">
-          <SearchPage />
-        </Route>
+       
+        
 
-        <Route path="/"></Route>
+      
       </Router>
     </div>
   );

@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect ,useState} from 'react';
 import './reply.css';
 import { Avatar, Button} from '@material-ui/core/'
 import CloseIcon from '@material-ui/icons/Close'
 import GifIcon from '@material-ui/icons/Gif';
 import EmojiEmoticon from '@material-ui/icons/EmojiEmotions'
 import db from './firebase';
+import Gifs from './Gifs'
  
 //No Reply component was found on YouTube
 const Reply = ({displayName, text, avatar, toggle, id })=> {
 const [comment, setComment]= useState('')
 const [image, setImage]=useState('')
-
+const [seeGifs, setSeeGifs]= useState(false)
+ //get Gif collection from Firebase!!
+ const [gifs, setGifs] = useState([]);
+ useEffect(() => {
+   db.collection("Gifs").onSnapshot((snapshot) =>
+     setGifs(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+   );
+ }, []);
 
    const addComment = (comment)=> {
     db.collection('Posts').doc(id).collection('comments').add(
@@ -29,9 +37,34 @@ const [image, setImage]=useState('')
     })
     setComment('')
 }
+
+const openGifs = ()=> {
+    setSeeGifs(!seeGifs)
+    console.log('GIF', seeGifs)
+}
    
 
    return <div className = 'reply'>
+        {seeGifs && (
+        <div className="gif__container">
+          <div className="gif__close">
+            <span onClick={() => openGifs()}>
+              <CloseIcon />
+            </span>
+          </div>
+          <div>
+            {gifs.map((g) => (
+              <div
+                className="gif__imageDiv"
+                onClick={() => setImage(g.data.image)}
+              >
+                <img className="gif__image" src={g.data.image} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
        <div className = 'close'
         onClick= {()=> toggle()}>
            <CloseIcon className ='close__x'/>
@@ -70,8 +103,11 @@ const [image, setImage]=useState('')
          
          
         <div className = 'reply__buttonDiv'>
+            <span onClick = {()=> openGifs()}>
             <GifIcon fontSize= 'large'/> 
-            <EmojiEmoticon/>
+
+            </span>
+             <EmojiEmoticon/>
             <Button
             onClick={()=>addComment(comment)}
              
